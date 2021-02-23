@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+    <div id="test1"><a onclick="window.testJs.test1()" >这是一个测试</a></div>
+    <div id="test2"><a onclick="window.testJs.test2('data')" >这是一个带参数的测试</a></div>
+
+
+    <input id="tt" type="text" name="name" value="test">
+    <input type="button" id="bt1" value="修改"></input>
+
+    <button type="button" id="bt">返回参数测试</button>
+
+
+    <form name="uploadForm" method="post" enctype="multipart/form-data" action="/upload/Default.aspx">
+        <input id="name" name="name" style="width:220px;" />
+        <input type="file" id="imgFile" name="imgFile" accept="image/*" style="width:220px;" />
+        <input type="submit" value="submit" />
+    </form>
+
+</body>
+<script language="JavaScript">
+    function callJs(value) {
+        alert(value);
+        return "this is a test" + value;
+    }
+
+    var name = document.getElementById("tt");
+    var bt = document.getElementById("bt");
+    var bt1 = document.getElementById("bt1");
+
+    <!--  弹窗拦截测试  -->
+    bt1.onclick = function() {
+        alert("这是一个无参数测试");
+    };
+
+    bt.onclick = function() {
+       testPrompt();
+    };
+
+    <!--  弹窗拦截测试带参数  -->
+    function testPrompt() {
+        var data = prompt("getData");
+        name.value = data;
+        alert(data);
+    }
+
+
+</script>
+</html>
